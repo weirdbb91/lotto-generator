@@ -6,13 +6,11 @@ from config import setting
 lotto_game_list = []
 
 def get_lotto_nums():
+    nums = list(range(setting.NUM_MIN, setting.NUM_MAX + 1))
     num_set = []
-    
     while len(num_set) < setting.NUM_LEN:
-        num = random.randint(setting.NUM_MIN, setting.NUM_MAX)
-        if not num in num_set:
-            num_set.append(num)
-    
+        num_idx = random.randint(0, len(nums) - 1)
+        num_set.append(nums.pop(num_idx))
     return sorted(num_set)
 
 
